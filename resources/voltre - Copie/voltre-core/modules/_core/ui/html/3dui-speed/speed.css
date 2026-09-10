@@ -1,0 +1,228 @@
+@font-face {
+    font-family: 'Oswald-Regular';
+    src: url('fonts/Oswald-Regular.eot');
+    src: url('fonts/Oswald-Regular.eot#iefix') format('embedded-opentype'),
+         url('fonts/Oswald-Regular.woff2') format('woff2'),
+         url('fonts/Oswald-Regular.woff') format('woff'),
+         url('fonts/Oswald-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Oswald-Light';
+    src: url('fonts/Oswald-Light.eot');
+    src: url('fonts/Oswald-Light.eot#iefix') format('embedded-opentype'),
+         url('fonts/Oswald-Light.woff2') format('woff2'),
+         url('fonts/Oswald-Light.woff') format('woff'),
+         url('fonts/Oswald-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'digital';
+    src: url('fonts/digital.ttf');
+}
+
+/* ===========================================================================
+   Theme variables — defaults are "basic" (bright white, readable on dark
+   holograms with default graphics).
+
+   The "realistic" theme mirrors hologramspeed's NVE theme: reduce opacity
+   and darken text so that heavy bloom/screen-space reflections from
+   realistic graphics packs (NVE, NeoBloom, etc.) don't saturate white into
+   unreadable glare.
+   =========================================================================== */
+:root {
+    --accent-color: rgba(122, 184, 255, 0.95); 
+    --text-color: rgba(255, 255, 255, 0.95);
+    --text-inactive: rgba(193, 193, 193, 0.5);
+    --speed-digit-active: rgba(255, 255, 255, 0.95);
+    --speed-digit-inactive: rgba(193, 193, 193, 0.5);
+    --gear-normal: rgba(0, 255, 114, 0.95);
+    --gear-overload: rgba(255, 0, 0, 0.95);
+    --gear-reverse: rgba(255, 255, 255, 0.95);
+    --rpm-background: rgba(255, 255, 255, 0.12);
+    --rpm-fill: rgba(255, 255, 255, 1);
+    --fuel-normal: rgba(255, 255, 255, 1);
+    --fuel-low: rgba(255, 77, 109, 0.95);
+    --belt-off: rgba(255, 77, 109, 0.95);
+    --belt-on: rgba(0, 255, 114, 0.95);
+}
+
+#displayRoot.mode-realistic {
+    --text-color: rgba(45, 45, 45, 0.65);
+    --text-inactive: rgba(45, 45, 45, 0.2);
+    --speed-digit-active: rgba(45, 45, 45, 0.65);
+    --speed-digit-inactive: rgba(45, 45, 45, 0.2);
+    --gear-normal: rgb(0, 33, 15);
+    --gear-overload: rgb(31, 0, 0);
+    --gear-reverse: #232323;
+    --rpm-background: rgba(45, 45, 45, 0.08);
+    --rpm-fill: rgba(45, 45, 45, 0.65);
+    --fuel-normal: rgba(45, 45, 45, 0.65);
+    --fuel-low: rgba(120, 0, 15, 0.8);
+    --belt-off: rgba(120, 0, 15, 0.8);
+    --belt-on: rgba(0, 33, 15, 0.8);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.hidden {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+.inactive {
+    color: var(--text-inactive);
+}
+
+/* ─── Root container ─── */
+#displayRoot {
+    position: fixed;
+    /* Centered horizontally at the bottom of the DUI canvas. */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 3.5vh;
+    color: var(--text-color);
+    font-size: 2.8vw;
+    font-family: 'Oswald-Light', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    filter: drop-shadow(0 0 0.3vw rgba(0, 0, 0, 0.3));
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.25s, visibility 0.25s;
+    width: 30vw;
+    height: 16vw;
+}
+
+/* ─── Gear (centered above the speed counter) ─── */
+#gearDisplay {
+    position: absolute;
+    left: 6vw;
+    top: 0;
+    width: 16vw;
+    text-align: center;
+    color: var(--gear-normal);
+    font-family: 'Oswald-Regular', sans-serif;
+    font-size: 1.6vw;
+    letter-spacing: 0.15vw;
+    line-height: 1;
+}
+#gearDisplay #gearNum {
+    font-family: 'digital';
+    font-size: 2.2vw;
+    margin-left: 0.3vw;
+    vertical-align: -0.1vw;
+}
+#gearDisplay.rpmOverload { color: var(--gear-overload); }
+#gearDisplay.reverseGear { color: var(--gear-reverse); }
+
+/* ─── Speed digits (center, big) ─── */
+#speedDisplay {
+    position: absolute;
+    left: 6vw;
+    top: 2.8vw;
+    font-size: 9vw;
+    font-weight: 100;
+    font-family: 'digital';
+    line-height: 1;
+    height: 9vw;
+    width: 16vw;
+}
+#speedDisplay > span {
+    position: absolute;
+    top: 0;
+    color: var(--speed-digit-active);
+}
+#speedDisplay > span:nth-child(1) { left: 0; }
+#speedDisplay > span:nth-child(2) { left: 5.2vw; }
+#speedDisplay > span:nth-child(3) { left: 10.4vw; }
+#speedDisplay > span:empty::after {
+    color: var(--speed-digit-inactive);
+    content: "0";
+}
+
+/* ─── Unit label (right of speed) ─── */
+#unitDisplay {
+    position: absolute;
+    left: 22.5vw;
+    top: 9vw;
+    font-family: 'Oswald-Light', sans-serif;
+    font-size: 1.8vw;
+    letter-spacing: 0.15vw;
+}
+
+/* ─── Indicators (top-right column: BELT / ABS / HBK) ─── */
+#absContainer,
+#hBrakeContainer,
+#seatbeltContainer {
+    position: absolute;
+    font-family: 'digital';
+    font-size: 1.6vw;
+    letter-spacing: 0.08vw;
+    left: 22.5vw;
+}
+#seatbeltContainer { top: 2vw; }
+#hBrakeContainer   { top: 4.2vw; }
+#absContainer      { top: 6.4vw; }
+
+#seatbeltIndicator.active { color: var(--belt-on); }
+#seatbeltIndicator.off    { color: var(--belt-off); }
+#hBrakeIndicator.active   { color: var(--belt-off); }
+#absIndicator.active      { color: var(--belt-off); }
+
+/* ─── RPM bar (under speed) ─── */
+#rpmBarBg {
+    position: absolute;
+    left: 6vw;
+    top: 11.8vw;
+    width: 16vw;
+    height: 0.55vw;
+    background: var(--rpm-background);
+    border: 0.08vw solid var(--rpm-background);
+    box-sizing: content-box;
+}
+#rpmBar {
+    width: 0%;
+    height: 100%;
+    background: var(--rpm-fill);
+    transition: width 0.08s linear;
+}
+
+/* ─── Fuel bar (under RPM) ─── */
+#fuelContainer {
+    position: absolute;
+    left: 6vw;
+    top: 13.2vw;
+    width: 16vw;
+    display: flex;
+    align-items: center;
+    gap: 0.6vw;
+}
+#fuelLabel {
+    font-family: 'Oswald-Light', sans-serif;
+    font-size: 1.3vw;
+    letter-spacing: 0.1vw;
+    color: var(--text-inactive);
+}
+#fuelBarBg {
+    flex: 1;
+    height: 0.55vw;
+    background: var(--rpm-background);
+    border: 0.08vw solid var(--rpm-background);
+    box-sizing: content-box;
+}
+#fuelBar {
+    width: 100%;
+    height: 100%;
+    background: var(--fuel-normal);
+    transition: width 0.15s linear, background 0.15s linear;
+}
+#fuelBar.low { background: var(--fuel-low); }

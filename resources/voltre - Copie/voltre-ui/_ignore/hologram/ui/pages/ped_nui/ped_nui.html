@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ped NUI</title>
+    <link rel="stylesheet" href="ped_nui.css">
+    <script src="../../js/hologram.js"></script>
+</head>
+<body>
+    <div class="ped-nui-container">
+        <div class="ped-nui-content">
+            <div class="ped-header">
+                <h1 id="ped-title">NPC Information</h1>
+            </div>
+            <div class="ped-body">
+                <div class="info-section">
+                    <div class="info-item">
+                        <span class="label">Nom:</span>
+                        <span class="value" id="ped-name">John Doe</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Statut:</span>
+                        <span class="value status-active" id="ped-status">Actif</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Niveau:</span>
+                        <span class="value" id="ped-level">42</span>
+                    </div>
+                </div>
+                <div class="actions-section">
+                    <button class="ped-button" id="btn-interact">
+                        <span class="btn-icon">💬</span>
+                        <span class="btn-text">Parler</span>
+                    </button>
+                    <button class="ped-button" id="btn-trade">
+                        <span class="btn-icon">🔄</span>
+                        <span class="btn-text">Échanger</span>
+                    </button>
+                    <button class="ped-button" id="btn-info">
+                        <span class="btn-icon">ℹ️</span>
+                        <span class="btn-text">Informations</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ped_nui.js"></script>
+</body>
+</html>

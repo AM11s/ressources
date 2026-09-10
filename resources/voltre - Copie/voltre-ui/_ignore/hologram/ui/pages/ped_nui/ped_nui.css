@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: rgba(12, 12, 12, 0.92);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ped-nui-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.ped-nui-content {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ped-header {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.ped-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.ped-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item .label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.info-item .value {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.status-active {
+    color: #4ade80;
+}
+
+.status-inactive {
+    color: #ef4444;
+}
+
+.actions-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+}
+
+.ped-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ped-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(5px);
+}
+
+.ped-button .btn-icon {
+    font-size: 20px;
+}
+
+.ped-button .btn-text {
+    flex: 1;
+    text-align: left;
+}
+
+/* Animation de pulse */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.ped-header h1 {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsive pour différentes tailles de ped */
+@media (max-height: 600px) {
+    .ped-nui-content {
+        max-width: 300px;
+    }
+    
+    .ped-header h1 {
+        font-size: 20px;
+    }
+    
+    .info-item .label,
+    .info-item .value {
+        font-size: 12px;
+    }
+    
+    .ped-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+@media (min-height: 1000px) {
+    .ped-nui-content {
+        max-width: 500px;
+    }
+    
+    .ped-header h1 {
+        font-size: 28px;
+    }
+    
+    .info-item .label,
+    .info-item .value {
+        font-size: 18px;
+    }
+    
+    .ped-button {
+        padding: 15px 25px;
+        font-size: 18px;
+    }
+}

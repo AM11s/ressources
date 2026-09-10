@@ -1,0 +1,24 @@
+# === Dependances (regenerables via npm/yarn install) ===
+**/node_modules/
+
+# === Etat runtime, propre a chaque serveur (NE PAS versionner) ===
+voltre-core/cache/
+
+# === Gros assets exclus du depot, synces separement entre serveurs ===
+# (decision 2026-06-10: depot leger, code seulement)
+voltre-cache/images/
+voltre-stream/stream/
+
+# === Junk OS / editeurs ===
+**/.DS_Store
+Thumbs.db
+*.code-workspace
+
+# === Logs & archives ===
+*.log
+*.zip
+*.tsx.bak-*
+
+voltre-core/modules/ui/web/dist/assets/index.js
+voltre-core/modules/ui/web/dist/assets/index.css
+voltre-core/modules/ui/web/dist/assets/index.html

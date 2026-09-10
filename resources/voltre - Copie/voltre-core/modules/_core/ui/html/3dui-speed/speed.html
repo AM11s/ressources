@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link href="speed.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="displayRoot" class="hidden mode-basic">
+        <div id="gearDisplay" class="normalRpm">VITESSE <span id="gearNum">1</span></div>
+
+        <div id="speedDisplay">
+            <span id="speedDisplayDigit_0"></span>
+            <span id="speedDisplayDigit_1"></span>
+            <span id="speedDisplayDigit_2"></span>
+        </div>
+
+        <div id="unitDisplay">KMH</div>
+
+        <div id="absContainer"><span class="inactive" id="absIndicator">ABS</span></div>
+        <div id="hBrakeContainer"><span class="inactive" id="hBrakeIndicator">HBK</span></div>
+        <div id="seatbeltContainer"><span class="inactive" id="seatbeltIndicator">CEINTURE</span></div>
+
+        <div id="rpmBarBg"><div id="rpmBar"></div></div>
+
+        <div id="fuelContainer">
+            <span id="fuelLabel">ESSENCE</span>
+            <div id="fuelBarBg"><div id="fuelBar"></div></div>
+        </div>
+    </div>
+    <script src="speed.js"></script>
+</body>
+</html>

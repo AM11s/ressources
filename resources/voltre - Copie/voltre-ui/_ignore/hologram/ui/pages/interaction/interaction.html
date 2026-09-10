@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaction 3D</title>
+    <link rel="stylesheet" href="../../css/hologram.css">
+    <link rel="stylesheet" href="interaction.css">
+    <script src="../../js/hologram.js"></script>
+</head>
+<body>
+    <div class="hologram-container">
+        <div id="interaction-panel" class="hologram-panel hologram-pulse hologram-scan">
+            <!-- Type Basic -->
+            <div id="basic-view" class="interaction-view" style="display: none;">
+                <div class="basic-content">
+                    <span class="holo-key" id="basic-key">E</span>
+                    <span class="basic-text holo-text-white" id="basic-text">Interagir</span>
+                </div>
+            </div>
+
+            <!-- Type Multi -->
+            <div id="multi-view" class="interaction-view" style="display: none;">
+                <div class="multi-header">
+                    <h2 class="holo-title holo-text" id="multi-title">Menu</h2>
+                </div>
+                <div class="multi-lines" id="multi-lines">
+                    <!-- Les lignes seront générées dynamiquement -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="interaction.js"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+/**
+ * Voltre Hologram - Interaction 3D Styles
+ */
+
+/* Variables pour le style default (Voltre-UI) */
+:root {
+    --holo-main-color: #3b82f6;
+    --holo-main-color-10: rgba(59, 130, 246, 0.1);
+    --holo-main-color-20: rgba(59, 130, 246, 0.2);
+    --holo-main-color-30: rgba(59, 130, 246, 0.3);
+    --holo-main-color-40: rgba(59, 130, 246, 0.5);
+    --holo-main-color-50: rgba(59, 130, 246, 0.5);
+    --holo-main-color-60: rgba(59, 130, 246, 0.5);
+    --holo-main-color-70: rgba(59, 130, 246, 0.5);
+    --holo-main-color-80: rgba(59, 130, 246, 0.8);
+}
+
+#interaction-panel {
+    /* min-width: 200px;
+    max-width: 400px; */
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+}
+
+#interaction-panel.disabled {
+    opacity: 0.6;
+    filter: grayscale(30%);
+    transform: scale(0.95);
+}
+
+/* ========================================
+   STYLE DEFAULT (Voltre-UI) - Dark & Compact
+   ======================================== */
+#interaction-panel.style-default {
+    background: rgba(12, 12, 12, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-bottom: 2px solid var(--holo-main-color);
+    border-radius: 8px;
+    padding: 15px 20px;
+    box-shadow: none;
+    animation: none;
+}
+
+#interaction-panel.style-default::after {
+    display: none;
+}
+
+.style-default .basic-content {
+    gap: 12px;
+    padding: 4px 0;
+}
+
+.style-default .basic-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: none;
+}
+
+.style-default .holo-key {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    font-weight: 600;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    text-shadow: none;
+}
+
+.style-default .holo-text,
+.style-default .holo-title {
+    color: #ffffff;
+    text-shadow: none;
+}
+
+.style-default .basic-text,
+.style-default .line-text {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: none;
+}
+
+.style-default .multi-line {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 5px 5px 0;
+    padding: 10px 14px;
+}
+
+.style-default .multi-line:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-left-color: rgba(255, 255, 255, 0.2);
+}
+
+.style-default .multi-line.has-action:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-left-color: var(--holo-main-color);
+}
+
+.style-default .line-left {
+    gap: 8px;
+}
+
+.style-default .line-key {
+    min-width: 26px;
+    height: 26px;
+    font-size: 12px;
+    padding: 0 7px;
+}
+
+.style-default .line-text {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: none;
+}
+
+.style-default .line-right {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    text-shadow: none;
+}
+
+.style-default .line-right .check-icon {
+    color: #4ade80;
+    font-size: 16px;
+}
+
+.style-default .line-right .cross-icon {
+    color: #f87171;
+    font-size: 16px;
+}
+
+.style-default .multi-header {
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.style-default .multi-header .holo-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-shadow: none;
+}
+
+.style-default .multi-lines {
+    gap: 6px;
+}
+
+/* Vue Basic */
+.basic-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 0;
+}
+
+.basic-text {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Vue Multi */
+.multi-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 200, 255, 0.3);
+}
+
+.multi-header .holo-title {
+    margin-bottom: 0;
+    font-size: 20px;
+}
+
+.multi-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: auto !important;
+    height: auto !important;
+    flex-grow: 1;
+}
+
+.multi-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 100, 150, 0.2); 
+    border-left: 3px solid rgba(0, 200, 255, 0.5);
+    border-radius: 0 6px 6px 0;
+    transition: all 0.2s ease;
+}
+
+.multi-line:hover {
+    background: rgba(0, 150, 200, 0.25);
+}
+
+.multi-line.has-action {
+    cursor: pointer;
+}
+
+.multi-line.has-action:hover {
+    border-left-color: #00d4ff;
+    background: rgba(0, 180, 255, 0.2);
+}
+
+.multi-line.hidden {
+    display: none;
+}
+
+.multi-line.disabled {
+    opacity: 0.4;
+}
+
+.line-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.line-key {
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    font-size: 13px;
+}
+
+.line-text {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.line-right {
+    font-size: 14px;
+    color: rgba(0, 212, 255, 0.9);
+    font-weight: 500;
+}
+
+/* Valeurs booléennes */
+.line-right .check-icon {
+    color: #00ff88;
+    font-size: 18px;
+}
+
+.line-right .cross-icon {
+    color: #ff5555;
+    font-size: 18px;
+}
+
+/* Animation d'entrée */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.interaction-view {
+    animation: slideIn 0.3s ease;
+}
+
+.multi-line {
+    animation: slideIn 0.3s ease;
+    animation-fill-mode: both;
+}
+
+.multi-line:nth-child(1) { animation-delay: 0.05s; }
+.multi-line:nth-child(2) { animation-delay: 0.1s; }
+.multi-line:nth-child(3) { animation-delay: 0.15s; }
+.multi-line:nth-child(4) { animation-delay: 0.2s; }
+.multi-line:nth-child(5) { animation-delay: 0.25s; }
+.multi-line:nth-child(6) { animation-delay: 0.3s; }
+.multi-line:nth-child(7) { animation-delay: 0.35s; }
+.multi-line:nth-child(8) { animation-delay: 0.4s; }
+
+/* Animation de clic/action */
+@keyframes keyPress {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.85);
+        background: rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes linePress {
+    0% {
+        transform: scale(1);
+        background: rgba(0, 100, 150, 0.2);
+    }
+    50% {
+        transform: scale(0.98);
+        background: var(--holo-main-color-40);
+    }
+    100% {
+        transform: scale(1);
+        background: rgba(0, 100, 150, 0.2);
+    }
+}
+
+.holo-key.pressed {
+    animation: keyPress 0.2s ease;
+}
+
+.multi-line.pressed {
+    animation: linePress 0.25s ease;
+}
+
+/* Style default - animation de clic */
+.style-default .holo-key.pressed {
+    animation: keyPress 0.2s ease;
+}
+
+.style-default .multi-line.pressed {
+    animation: linePress 0.25s ease;
+}

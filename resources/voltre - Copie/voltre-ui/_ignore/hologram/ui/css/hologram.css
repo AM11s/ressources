@@ -1,0 +1,208 @@
+/**
+ * Voltre Hologram System - Common Styles
+ * Styles de base pour les hologrammes
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container principal */
+.hologram-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+/* Effet holographique de base */
+.hologram-panel {
+    background: linear-gradient(135deg, 
+        rgba(0, 150, 255, 0.15) 0%, 
+        rgba(0, 100, 200, 0.25) 50%,
+        rgba(0, 150, 255, 0.15) 100%
+    );
+    border: 2px solid rgba(0, 180, 255, 0.6);
+    border-radius: 12px;
+    padding: 20px;
+    /* backdrop-filter: blur(10px); */
+    box-shadow: 
+        0 0 20px rgba(0, 150, 255, 0.3),
+        inset 0 0 30px rgba(0, 150, 255, 0.1);
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+}
+
+/* Animation de pulsation */
+.hologram-pulse {
+    animation: hologramPulse 2s ease-in-out infinite;
+}
+
+@keyframes hologramPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(0, 150, 255, 0.3),
+            inset 0 0 30px rgba(0, 150, 255, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(0, 150, 255, 0.5),
+            inset 0 0 40px rgba(0, 150, 255, 0.2);
+    }
+}
+
+/* Effet de scan */
+.hologram-scan {
+    position: relative;
+    overflow: hidden;
+}
+
+.hologram-scan::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 200, 255, 0.1),
+        transparent
+    );
+    animation: hologramScan 3s linear infinite;
+}
+
+@keyframes hologramScan {
+    0% { top: -50%; }
+    100% { top: 150%; }
+}
+
+/* Texte holographique */
+.holo-text {
+    color: #00d4ff;
+    text-shadow: 
+        0 0 5px rgba(0, 212, 255, 0.8),
+        0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.holo-text-white {
+    color: #ffffff;
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(0, 150, 255, 0.5);
+}
+
+/* Titres */
+.holo-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Boutons/touches */
+.holo-key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 10px;
+    background: rgba(0, 150, 255, 0.3);
+    border: 1px solid rgba(0, 200, 255, 0.6);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #00d4ff;
+    text-shadow: 0 0 5px rgba(0, 212, 255, 0.8);
+}
+
+.holo-key.active {
+    background: rgba(0, 200, 255, 0.5);
+    box-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+}
+
+/* Lignes d'interaction */
+.holo-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    margin: 5px 0;
+    background: rgba(0, 100, 150, 0.2);
+    border-left: 3px solid rgba(0, 200, 255, 0.6);
+    border-radius: 0 8px 8px 0;
+    transition: all 0.2s ease;
+}
+
+.holo-line:hover {
+    background: rgba(0, 150, 200, 0.3);
+    border-left-color: #00d4ff;
+}
+
+.holo-line.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.holo-line.hidden {
+    display: none;
+}
+
+.holo-line-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.holo-line-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Icônes check/cross */
+.holo-check {
+    color: #00ff88;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.8);
+}
+
+.holo-cross {
+    color: #ff4444;
+    text-shadow: 0 0 5px rgba(255, 68, 68, 0.8);
+}
+
+/* Indicateur de distance */
+.holo-distance {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* État désactivé (trop loin) */
+.holo-disabled {
+    opacity: 0.5;
+    filter: grayscale(50%);
+}
+
+/* Responsive scaling */
+.holo-scale-sm { transform: scale(0.8); }
+.holo-scale-md { transform: scale(1.0); }
+.holo-scale-lg { transform: scale(1.2); }

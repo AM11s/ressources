@@ -1,0 +1,11 @@
+ESX.RegisterUsableItem("carokit", function(source)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    TriggerClientEvent("voltre:kit:mecano:repair", source)
+    xPlayer.removeInventoryItem("carotkit", 1)
+end)
+
+ESX.RegisterUsableItem("cleankit", function(source)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    TriggerClientEvent("voltre:kit:mecano:clean", source)
+    xPlayer.removeInventoryItem("cleankit", 1)
+end)

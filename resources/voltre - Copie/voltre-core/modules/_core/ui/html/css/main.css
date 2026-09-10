@@ -1,0 +1,199 @@
+/**
+ * Voltre UI - Styles principaux
+ */
+
+/* Reset et base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: transparent;
+    color: #fff;
+}
+
+/* Container principal */
+#voltre-ui {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    pointer-events: none;
+}
+
+#voltre-ui * {
+    pointer-events: auto;
+}
+
+/* Variables CSS */
+:root {
+    /* Couleurs principales */
+    --voltre-primary: #0ea7ff;
+    --voltre-primary-dark: #0770ad;
+    --voltre-secondary: #3498db;
+    --voltre-success: #2ecc71;
+    --voltre-warning: #f39c12;
+    --voltre-error: #e74c3c;
+    --voltre-info: #3498db;
+    
+    /* Couleurs de fond */
+    --voltre-bg-dark: rgba(12, 12, 12, 0.7);
+    --voltre-bg-medium: rgba(12, 12, 12, 0.6);
+    --voltre-bg-light: rgba(12, 12, 12, 0.4);
+    
+    /* Texte */
+    --voltre-text-primary: #ffffff;
+    --voltre-text-secondary: rgba(255, 255, 255, 0.7);
+    --voltre-text-muted: rgba(255, 255, 255, 0.5);
+    
+    /* Bordures */
+    --voltre-border-radius: 8px;
+    --voltre-border-radius-sm: 4px;
+    --voltre-border-radius-lg: 12px;
+    
+    /* Ombres */
+    --voltre-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --voltre-shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.4);
+    
+    /* Transitions */
+    --voltre-transition: all 0.3s ease;
+    --voltre-transition-fast: all 0.15s ease;
+}
+
+/* Utilitaires */
+.hidden {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.3s ease forwards;
+}
+
+.slide-out-right {
+    animation: slideOutRight 0.3s ease forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+/* Containers */
+#icons {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+#icons .icon {
+    position: absolute;
+    pointer-events: none;
+}
+
+#modals {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+#modals.active {
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--voltre-primary);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--voltre-primary-dark);
+}
